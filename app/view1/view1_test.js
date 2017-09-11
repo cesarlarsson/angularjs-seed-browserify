@@ -1,7 +1,8 @@
-'use strict';
+/* 'use strict';
+require('../app');
 
 describe('myApp.view1 module', function() {
-
+  beforeEach(module('templates'));
   beforeEach(module('myApp.view1'));
 
   describe('view1 controller', function(){
@@ -13,4 +14,21 @@ describe('myApp.view1 module', function() {
     }));
 
   });
-});
+}); */
+
+require('./view1.js');
+
+describe('myApp.view1 module', function() {
+  beforeEach(module('myApp.view2'));
+  beforeEach(module('karma.templates'));
+
+  var a;
+  
+    it("and so is a spec", function() {
+      a = true;
+  
+      expect(a).toBe(true);
+    });
+
+
+  });
