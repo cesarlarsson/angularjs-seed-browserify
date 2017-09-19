@@ -9,6 +9,20 @@ angular.module('myApp.view2', ['ngRoute'])
   });
 }])
 
-.controller('View2Ctrl', [function() {
+.controller('View2Ctrl', ['$scope',function($scope) {
+  $scope.title = "Destination Admin";
+  $scope.destinations = [];
+  $scope.newDestination ={
+    city: undefined,
+    country: undefined
+  };
 
+  $scope.addDestination = function(){
+    $scope.destinations.push(
+      {
+        city: $scope.newDestination.city,
+        country: $scope.newDestination.country
+      }
+    );
+  }
 }]);

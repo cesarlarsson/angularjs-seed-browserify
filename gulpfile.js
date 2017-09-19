@@ -5,28 +5,15 @@ source = require('vinyl-source-stream'),
 rename     = require('gulp-rename'), //Rename a file
 uglify = require('gulp-uglify'), //Uglify JS
 bulkify = require('bulkify'), //require files in a folder(s)
-//concatCss = require('gulp-concat-css'), //concat css files
-//del = require('del'), //Delete files on a folder 
-
 ngHtml2Js = require('browserify-ng-html2js'),
 concat = require('gulp-concat'),
 sourcemaps = require('gulp-sourcemaps'),
 _ = require('underscore'),
-//watch = require('gulp-watch'),
-
-
-//plumber = require('gulp-plumber'),
 notifier = require('node-notifier');
-
-//map = require('map-stream');
-
 
 //Angular main files
 var appMainList=[];
-/* appMainList.push("./gto.config.js");
-appMainList.push("./gto.constants.js");
-appMainList.push("./gto.controller.js");
-appMainList.push("./gto.module.js"); */
+
 var config = {
     js: {
         src: './app/app.js',       // Entry point
@@ -35,8 +22,6 @@ var config = {
         outputFile: 'bundle.js', // Name to use for bundle
         outputFileMin: 'bundle.min.js' // Name to use for bundle
     },
-
-
 };
 
 function bundleLocal(bundler) {
@@ -53,7 +38,6 @@ function bundleLocal(bundler) {
       .pipe(buffer())               // Convert to gulp pipeline                                
       .pipe(sourcemaps.init())  
       .pipe(rename(config.js.outputFile))          // Rename output from 'main.js'
-
       .pipe(gulp.dest(config.js.outputDirLocal)) 
       .pipe(uglify({
            mangle: false, //very important without this some features will not work
@@ -75,6 +59,5 @@ gulp.task('bundle-local-main', function () {
                             // Supported in Angular 1.3.14 and above if you bundle angular with browserify
         }))
         .transform("browserify-ngannotate");
-
     bundleLocal(bundler);
-})
+});

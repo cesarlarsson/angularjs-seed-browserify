@@ -12,6 +12,7 @@ angular.module('myApp', [
   'myApp.view1',
   'myApp.view2',
   'myApp.version',
+  require("./view1/template/view1.html"),
   require("./view2/template/view2.html")
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
