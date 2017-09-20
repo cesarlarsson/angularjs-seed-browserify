@@ -5,12 +5,14 @@ describe('myApp.view2 module', function() {
   beforeEach(module('myApp.view2'));
   
   var scope ={};
+  var httpBackend, timeout;
   describe('view2 controller', function(){
 
     var view2Ctrl;
-    beforeEach(inject(function($controller, $rootScope) {
+    beforeEach(inject(function($controller, $rootScope, $httpBackend) {
       scope = $rootScope.$new();
       view2Ctrl = $controller('View2Ctrl', {$scope:scope});
+      httpBackend =$httpBackend;
     }));
    
     
@@ -40,6 +42,28 @@ describe('myApp.view2 module', function() {
       expect(scope.destinations[0].city).toBe("London");
       expect(scope.destinations[0].country).toBe("England");
 
+    });
+
+    it('should update the weather for a specific destination', function() {
+      scope.destination =
+      {
+        city : "Melbourne",
+        country: "Australia"
+      };
+
+      httpBackend.expectGET("http://api.openweathermap.org/data/2.5/weather?q="+ scope.destination.city +"&APPID=" + scope.key).respond(
+        {
+          weather: [{main : 'Rain', detail : 'Light rain'}],
+          main : { temp : 288 }
+        }
+      );
+  
+      scope.getWeather(scope.destination);
+  
+      httpBackend.flush();
+  
+      expect(scope.destination.weather.main).toBe("Rain");
+      expect(scope.destination.weather.temp).toBe(15);
     });
 
   });

@@ -14,9 +14,11 @@
 
 <section>
   <h2>Your trip</h2>
-  <div ng-repeat="destionation in destinations">
-
-    <span>{{destionation.city}},{{ destionation.country}}</span>
+  <h4 ng-show="message">{{message}}</h4>
+  <div ng-repeat="destination in destinations">
+    <span>{{destination.city}},{{ destination.country}}</span>
+    <span> - {{ destination.weather.main}}, {{destination.weather.temp}}</span>
+    <button ng-click="getWeather(destination)">Update Weather</button>
   </div>
 
 </section>
