@@ -94,7 +94,7 @@ ngModule.run(['$templateCache', function($templateCache) {
     '  <form name="destinationForm" ng-submit="addDestination()">\n' +
     '    City: <input name="city" type="text" ng-model="newDestination.city" />\n' +
     '    Country: <input name="country" type="text" ng-model="newDestination.country"  />\n' +
-    '    <input type="submit" value="Add" />\n' +
+    '    <input class="btn btn-success" type="submit" value="Add" />\n' +
     '  </form>\n' +
     '</section>\n' +
     '\n' +
@@ -174,6 +174,8 @@ angular.module('myApp.view2', ['ngRoute'])
   });
   $scope.convertKelvinToCelsius = function(temp){
     return Math.round(temp -273);
-  }
+  };
+  
+
 }]);
 },{}]},{},[1]);

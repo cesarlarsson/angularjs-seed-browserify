@@ -1,14 +1,10 @@
 <p>This is the partial for {{title}}</p>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
 
 <section>
   <form name="destinationForm" ng-submit="addDestination()">
     City: <input name="city" type="text" ng-model="newDestination.city" />
     Country: <input name="country" type="text" ng-model="newDestination.country"  />
-    <input type="submit" value="Add" />
+    <input class="btn btn-success" type="submit" value="Add" />
   </form>
 </section>
 
